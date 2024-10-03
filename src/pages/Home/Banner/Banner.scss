@@ -1,0 +1,23 @@
+.banner {
+  grid-area: 1/2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  
+  @include breakpoint(medium) {
+    padding: 2rem 0;
+  }
+  
+  @include breakpoint(large) {
+    padding: 2.5rem 0;
+  }
+  
+  &__logo {
+    width: 3rem;
+    
+    @include breakpoint(medium) {
+      width: 4rem;
+    }
+  }
+}

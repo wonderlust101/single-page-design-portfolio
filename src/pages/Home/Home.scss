@@ -1,0 +1,13 @@
+.home {
+  background-color: $clr-neutral-white;
+  min-height: 100vh;
+  overflow: hidden;
+  
+  &__content {
+    row-gap: 6.25rem;
+    
+    @include breakpoint(medium) {
+      row-gap: 7.5rem;
+    }
+  }
+}

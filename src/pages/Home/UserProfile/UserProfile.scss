@@ -1,0 +1,37 @@
+.user-profile {
+  grid-area: 2/2;
+  display: grid;
+  justify-items: center;
+  gap: 2.5rem;
+  
+  @include breakpoint(medium) {
+    grid-area: 2/1 / 2 / 4;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    right: 2.5rem;
+  }
+  
+  @include breakpoint(large) {
+    grid-area: 2/2;
+    right: unset;
+  }
+  
+  &__text {
+    display: grid;
+    justify-items: center;
+    gap: 1.5rem;
+    text-align: center;
+
+    @include breakpoint(medium) {
+      justify-items: flex-start;
+      align-content: flex-start;
+      text-align: left;
+    }
+  }
+
+  &__body-text {
+    color: $clr-neutral-grey;
+  }
+}
