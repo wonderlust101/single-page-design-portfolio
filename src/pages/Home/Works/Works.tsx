@@ -1,4 +1,7 @@
 import {useEffect, useRef, useState} from "react";
+
+import Button from "../../../components/Button";
+
 import testImage1 from "/images/image-slide-1.jpg";
 import testImage2 from "/images/image-slide-2.jpg";
 import testImage3 from "/images/image-slide-3.jpg";
@@ -8,7 +11,6 @@ import leftArrowIcon from "/images/icon-arrow-left.svg";
 import rightArrowIcon from "/images/icon-arrow-right.svg";
 
 import "./Works.scss";
-import Button from "../../../components/Button";
 
 export default function Works() {
     const images = [testImage1, testImage2, testImage3, testImage4, testImage5];
@@ -18,19 +20,23 @@ export default function Works() {
 
     useEffect(() => {
         handleResize();
-        
-        window.addEventListener('resize', handleResize);
-        
-        return () => window.removeEventListener('resize', handleResize);
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     const handleResize = () => {
         if (sliderRef.current) {
-            const singleImage = sliderRef.current.querySelector('.works__slider-image') as HTMLImageElement;
+            const singleImage = sliderRef.current.querySelector(".works__slider-image") as HTMLImageElement;
             if (singleImage) {
                 setImageWidth(singleImage.offsetWidth + 16);
             }
         }
+    };
+
+    const handleImageLoad = () => {
+        handleResize();
     };
 
     const handlePrev = () => {
@@ -45,7 +51,7 @@ export default function Works() {
         <section className="works">
             <h2>My Work</h2>
 
-            <div className='works__slider' ref={sliderRef}>
+            <div className="works__slider" ref={sliderRef}>
                 <div className="works__slider-wrapper"
                      style={{transform: `translateX(-${currentIndex * imageWidth}px)`}}>
                     {images.map((image, index) => (
@@ -55,6 +61,7 @@ export default function Works() {
                             src={image}
                             alt={`Slide ${index}`}
                             role="presentation"
+                            onLoad={handleImageLoad}
                         />
                     ))}
                 </div>

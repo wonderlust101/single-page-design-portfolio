@@ -1,6 +1,6 @@
 import logo from "/images/logo.svg";
 import "./Banner.scss";
-import Button from "../../../components/Button";
+import Button from "../Button";
 
 export default function Banner() {
     return (
